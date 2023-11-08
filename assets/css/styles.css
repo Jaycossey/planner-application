@@ -1,7 +1,33 @@
 :root {
-
+    --font-mono: monospace;
+    --black: #000;
+    --text-color: #DB1AF4;
+    --radial-1: radial-gradient(ellipse at center, #fff, gray 20%, transparent 70%);
 }
 
 body {
-    background-color: #666;
+    background-color: var(--black);
+    box-sizing: border-box;
+}
+
+#welcome-text {
+    background-image: var(--radial-1);
+    font-size: 1.2rem;
+    font-family: var(--font-mono);
+    text-align: center;
+    color: var(--text-color);
+    text-shadow: 0 0 10px black;
+}
+
+#welcome-text > p {
+    background-color: white;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+
+.date,
+.current-time {
+    background-color: white;
 }
