@@ -33,5 +33,12 @@ header {
 hr {
     border: 2px solid white;
     border-radius: 2px;
-    width: 95%;
+    width: 90%;
+}
+
+button {
+    color: white;
+    background-color: #DC36F1;
+    border: 2px outset #adadad;
+    border-radius: 5px;
 }
