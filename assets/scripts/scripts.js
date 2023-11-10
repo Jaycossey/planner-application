@@ -1,43 +1,63 @@
-// GLOBALS --------------------------------------------
+// GLOBALS -----------------------------------------------------
 const rootDiv = document.getElementById('root');
+const dateDisplay = document.querySelector('.date');
+const currentTime = document.querySelector('.current-time');
 
-// Date Functions -------------------------------------
-/**
- * This section needs to call and obtain the date
- * It needs to display at the top of the screen in the 
- * header tag
- * 
- * I need to store and update the date whenever the browser
- * is open, this needs to be a live view
- */
+// Total time slots required
+const timeSlotCount = 9;
+const listEls = [];
 
+// Date and Time Functions -------------------------------------
 
-// Time Functions -------------------------------------
-/**
- * This section needs to call and obtain the current time
- * Store this in a variable, update live
- * 
- * This will be shown in the header div, and also referenced
- * inside the list elements, ensuring I change the CSS along
- * side the updating times
- * 
- * The time should be displayed WITH LOCAL TIME!!!
- * 
- */
+// set and display current date
+function displayDate() {
+    let date = dayjs().format('DD/MM/YYYY');
+    dateDisplay.innerText = date;
+}
 
+// Set and update time
+function updateTime() {
+    setInterval(() => {
+        currentTime.innerText = dayjs().format('h:mm a');
+    }, 1000);
+}
 
-// Planner Structure Elements -------------------------
-/**
- * This should handle the creation and styling of the daily planner
- * It should have hour long blocks, between 9am-5pm 
- * 
- * The li item should display: time block
- *      input / appointment
- *      remove / delete appointment button
- * 
- * 
- */
+// Planner Structure Elements ----------------------------------
 
+// create and return timeSlot elements
+function createTimeSlots() {
+    for (let i = 0; i < timeSlotCount; i++) {
+        let element = document.createElement('li');
+        element.name = i + 8;
+        element.class = "time-slot";
+        element.style.height = "50px";
+        element.style.marginLeft = "auto";
+        element.style.marginRight = "auto";
+        element.style.padding = "auto";
+        element.style.listStyle = "none";
+
+        listEls.push(element);
+    }
+
+}
+
+function displayPlanner() {
+    const listContainer = document.createElement('ul');
+    listContainer.style.width = "90%";
+    listContainer.style.margin = "auto";
+    listContainer.style.background = "white";
+    listContainer.style.borderRadius = "20px";
+    listContainer.style.border = "6px outset purple";
+
+    createTimeSlots();
+    
+    listEls.forEach((element) => {
+        listContainer.append(element);
+    })
+    
+    rootDiv.appendChild(listContainer);
+}
+displayPlanner();
 
 // List Element Functions -----------------------------
 /**
@@ -47,3 +67,7 @@ const rootDiv = document.getElementById('root');
  *                  mid purple current time
  *                  light pruple for future time 
  */
+
+
+displayDate();
+updateTime();

@@ -1,6 +1,6 @@
 # Planner Application
 
-This project is designed to help organise and structure a working life. The app will be able to be filtered by day, week or month, utilise local storage to hold data inputted by the user, have the ability to display those pieces of information in time blocks which correspond to both the specific date and time duration, and have the ability to remove that data as well. 
+This project is designed to help organise and structure a working life. The app will utilise local storage to hold data inputted by the user, have the ability to display those pieces of information in time blocks which correspond to both the specific date and time duration, and have the ability to remove that data as well. 
 
 # Roadmap
 
@@ -12,7 +12,7 @@ This project is designed to help organise and structure a working life. The app 
 - CSS
 - Javascript
 - jQuery
-- BootstrapCSS
+- dayJs
 
 # Usage 
 
