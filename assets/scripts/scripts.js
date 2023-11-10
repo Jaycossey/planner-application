@@ -14,6 +14,37 @@ const errorPlace = "Please input an appointment";
 // appointment storageArray
 let appointmentArray = [];
 
+
+// Update CSS styles with time block ---------------------------
+function updateCSS() {
+    // set color scheme for li elements
+    let past = "#adadad";
+    let present = "#DC36F1";
+    let future = "white";
+
+    // get current time hour
+    let currentTime = dayjs().format('HH');
+    
+    // store all li in temp array
+    let elements = document.querySelectorAll('li');
+
+    // for each element
+    elements.forEach((li) => {
+        // get id
+        let timeBlock = li.id;
+        // if id includes current time
+        if (timeBlock.includes(currentTime)) {
+            li.style.background = present;
+        // else if id is still to come
+        } else if ((timeBlock[0] + timeBlock[1]) > currentTime) {
+            li.style.background = future;
+        // else its in the past
+        } else {
+            li.style.background = past;
+        }
+    })
+}
+
 // Date and Time Functions -------------------------------------
 
 // set and display current date
@@ -40,9 +71,6 @@ function updateCurrentAppointments() {
     // update array with currently stored apps
     appointmentArray = JSON.parse(localStorage.getItem('appointments'));
 
-    // // logs current array of objects
-    console.log(appointmentArray);
-
     // for each current appointment
     appointmentArray.forEach((object) => {
         let id = '#' + object.time;
@@ -61,10 +89,17 @@ function updateCurrentAppointments() {
 function createTimeSlots() {
     // create for every valid timeslot
     for (let i = 0; i < timeSlotCount; i++) {
+        // dynamically set prefix for id's - makes CSS easier to edit
+        let idPrefix = "";
+        if (i === 0) {
+            idPrefix = "0" + (i + timeSlotCount);
+        } else {
+            idPrefix = i + timeSlotCount;
+        }
         // element and styling
         let element = document.createElement('li');
-        element.textContent = i + timeSlotCount + ":00";
-        element.id = (i + timeSlotCount) + "oclock";
+        element.textContent = idPrefix + ":00";
+        element.id = idPrefix + "oclock";
         element.class = "time-slot";
         element.style.height = "50px";
         element.style.margin = "2px";
@@ -202,3 +237,4 @@ $('button').css('margin-left', '20%');
 displayDate();
 updateTime();
 updateCurrentAppointments();
+updateCSS();

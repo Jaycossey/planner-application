@@ -38,7 +38,12 @@ hr {
 
 button {
     color: white;
+    padding: 4px;
     background-color: #DC36F1;
     border: 2px outset #adadad;
     border-radius: 5px;
+}
+
+button:hover {
+    cursor: url('../images/cursor-icon.png'), pointer;
 }
