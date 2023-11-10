@@ -32,6 +32,31 @@ function updateTime() {
 
 // Planner Structure Elements ----------------------------------
 
+// update current appointments on initial load
+function updateCurrentAppointments() {
+    // end function if no appointments
+    if (localStorage.getItem('appointments') === null) return;
+
+    // update array with currently stored apps
+    appointmentArray = JSON.parse(localStorage.getItem('appointments'));
+
+    // // logs current array of objects
+    console.log(appointmentArray);
+
+    // for each current appointment
+    appointmentArray.forEach((object) => {
+        let id = '#' + object.time;
+        // if the id timeblock exists
+        if ($(id)) {
+            // handle updating attributes and text
+            $(id).children('input').attr('disabled', true);
+            $(id).children('input').attr('placeholder', object.appointmentString);
+            $(id).children('button').text('Remove');
+        }
+    });
+
+}
+
 // create and return timeSlot elements
 function createTimeSlots() {
     // create for every valid timeslot
@@ -48,9 +73,11 @@ function createTimeSlots() {
         element.style.paddingBottom = "auto";
         element.style.listStyle = "none";
         element.style.borderBottom = "4px solid purple";
+
         // push to array
         listEls.push(element);
     }
+
 }
 
 // function to display planner container
@@ -73,6 +100,7 @@ function displayPlanner() {
     // append to parent div
     rootDiv.appendChild(listContainer);
 }
+
 // call functions
 displayPlanner();
 
@@ -138,7 +166,7 @@ function toggleAppointment(event) {
         // add appointment and switch button text
         addAppointment(targetTime, targetInput);
         event.target.textContent = "Remove";
-        input.setAttribute('disabled');
+        input.setAttribute('disabled', true);
     // else if removing an appointment
     } else if (event.target.textContent === "Remove") {
         input.removeAttribute('disabled');
@@ -173,3 +201,4 @@ $('button').css('margin-left', '20%');
 
 displayDate();
 updateTime();
+updateCurrentAppointments();
