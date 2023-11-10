@@ -1,6 +1,6 @@
 :root {
     --font-mono: monospace;
-    --black: #111;
+    --black: #333;
     --text-color: white;
     --radial-1: radial-gradient(ellipse at center, #fff, gray 20%, transparent 70%);
 }

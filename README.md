@@ -2,9 +2,7 @@
 
 This project is designed to help organise and structure a working life. The app will utilise local storage to hold data inputted by the user, have the ability to display those pieces of information in time blocks which correspond to both the specific date and time duration, and have the ability to remove that data as well. 
 
-# Roadmap
-
-- Planning Stage
+![image of app](./assets/images/screengrab.PNG)
 
 # Front End
 
@@ -16,7 +14,7 @@ This project is designed to help organise and structure a working life. The app 
 
 # Usage 
 
-N/A - This project is still in development
+Visit this page at: https://jaycossey.github.io/planner-application/
 
 # Support 
 
